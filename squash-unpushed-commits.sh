@@ -82,7 +82,7 @@ echo "|  commit message: ${commit_message}"
 
 git reset --soft HEAD~$num_commits_to_squash
 git add .
-echo "| -"
+echo "| _"
 git commit -am "$commit_message" 2>&1 | sed  's/^/| | /'
 echo "| v"
 

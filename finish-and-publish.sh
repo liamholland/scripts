@@ -11,7 +11,7 @@ squash_script_dep="squash-unpushed-commits.sh"
 curr_dir="$(dirname "${BASH_SOURCE[0]}")"
 commit_message="$1"
 
-echo "-"
+echo "_"
 echo "| squashing commits and publishing to remote branch"
 
 if ! [ -f "$curr_dir/$squash_script_dep" ]; then
@@ -25,7 +25,7 @@ bash "$curr_dir/$squash_script_dep" "$commit_message" | sed  's/^/| /'
 echo "| branch squashed... moving to publishing"
 
 branch_name=$(git branch --show)
-echo "| -"
+echo "| _"
 git push origin "$branch_name" 2>&1 | sed  's/^/| | /'
 
 if [ "$?" -gt 0 ]; then
