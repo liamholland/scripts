@@ -25,11 +25,15 @@ bash "$curr_dir/$squash_script_dep" "$commit_message" | sed  's/^/| /'
 echo "| branch squashed... moving to publishing"
 
 branch_name=$(git branch --show)
-git push origin "$branch_name" | sed  's/^/| /'
+echo "| -"
+git push origin "$branch_name" 2>&1 | sed  's/^/| | /'
 
 if [ "$?" -gt 0 ]; then
+    echo "| x"
     echo -e "failed to publish - aborting...\nx"
     exit 1
+else
+    echo "| v"
 fi
 
 echo "v"
