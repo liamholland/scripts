@@ -16,7 +16,7 @@ echo "| squashing commits and publishing to remote branch"
 
 if ! [ -f "$curr_dir/$squash_script_dep" ]; then
     echo -e "| this script depends on squash-unpush-commits.sh\n| see https://github.com/liamholland/scripts/blob/main/squash-unpushed-commits.sh"
-    echo "x"
+    echo "X"
     exit 1
 fi
 
@@ -29,8 +29,8 @@ echo "| _"
 git push origin "$branch_name" 2>&1 | sed  's/^/| | /'
 
 if [ "$?" -gt 0 ]; then
-    echo "| x"
-    echo -e "failed to publish - aborting...\nx"
+    echo "| X"
+    echo -e "failed to publish - aborting...\nX"
     exit 1
 else
     echo "| v"
